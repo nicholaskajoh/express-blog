@@ -1,0 +1,25 @@
+{
+  "name": "express-blog",
+  "version": "0.1.0",
+  "description": "A blog app with node, express and mongoDB",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nicholaskajoh/express-blog.git"
+  },
+  "author": "Nicholas Kajoh",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nicholaskajoh/express-blog/issues"
+  },
+  "homepage": "https://github.com/nicholaskajoh/express-blog#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "ejs": "^2.5.5",
+    "express": "^4.14.0",
+    "mongodb": "^2.2.19"
+  }
+}

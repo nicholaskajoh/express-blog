@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Express Blog</title>
+		<link rel="stylesheet" href="/static/css/foundation.min.css">
+		<link rel="stylesheet" type="text/css" href="/static/css/app.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
+	<body>
+		<div class="row">
+			<h2>Express Blog <small>built with node, express and mongoDB</small></h2>
+		</div>
+
+		<div class="row">
+			<div class="columns large-4 medium-6 small-12">
+				<div class="callout primary">
+					<h4>New Post</h4>
+					<form method="post" action="/<% if (typeof post == 'undefined') { %>new<% } else { %>edit<% } %>">
+						<% if (typeof post != 'undefined') { %><input type="hidden" name="id" value="<%= post._id %>"><% } %>
+						<input type="text" name="title" placeholder="title" value="<% if (typeof post != 'undefined') { %><%= post.title %><% } %>">
+						<textarea name="content" placeholder="content"><% if (typeof post != 'undefined') { %><%= post.content %><% } %></textarea>
+						<input class="button success" type="submit" name="submit" value="<% if (typeof post == 'undefined') { %>Post<% } else { %>Save<% } %>">
+					</form>
+				</div>
+			</div>
+			<div class="columns large-8 medium-6 small-12">
+				<ul class="posts">
+					<% for (var i=0; i<posts.length; i++) {%>
+						<li class="post">
+							<h4>
+								<%= posts[i].title %> 
+								<a class="button" href="/?id=<%= posts[i]._id %>&edit" >Edit</a>
+							</h4>
+							<p><%= posts[i].content %></p>
+							<form method="post" action="/delete">
+								<input type="hidden" name="id" value="<%= posts[i]._id %>">
+								<input class="button alert" type="submit" value="Delete">
+							</form>
+						</li>
+					<% } %>
+				</ul>
+			</div>
+		</div>
+
+		<script type="text/javascript" src="/static/js/vendor/jquery.js"></script>
+		<script type="text/javascript" src="/static/js/vendor/foundation.min.js"></script>
+		<script type="text/javascript" src="/static/js/app.js"></script>
+	</body>
+</html>
